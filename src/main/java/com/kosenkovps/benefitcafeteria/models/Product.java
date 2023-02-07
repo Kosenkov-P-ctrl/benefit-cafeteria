@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 @Entity
 @NoArgsConstructor
@@ -20,4 +21,6 @@ public class Product {
     private String name;
     @NonNull
     private BigDecimal price;
+    @NonNull
+    private Timestamp expirationDate;
 }

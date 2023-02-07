@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 import static com.kosenkovps.benefitcafeteria.models.Role.PERSONAL_OFFICER;
@@ -65,11 +66,18 @@ public class EmployeeService {
     public boolean buyProduct(Long employeeId, Long productId){
         Optional<Employee> buyer = employeeRepository.findById(employeeId);
         Optional<Product> product = productRepository.findById(productId);
+        PurchaseHistory purchase = new PurchaseHistory();
         if(buyer.isPresent() && product.isPresent()){
             if(buyer.get().getBenefitBalance().subtract(product.get().getPrice()).compareTo(BigDecimal.ZERO) < 0){
                 return false;
             }else{
                 employeeRepository.changeBenefitBalance(employeeId, buyer.get().getBenefitBalance().subtract(product.get().getPrice()));
+                purchase.setEmployee(buyer.get());
+                purchase.setProducts(product.get());
+                purchase.setActual(true);
+                purchase.setPurchaseDay(new Timestamp(System.currentTimeMillis()));
+                purchase.setEndDay(product.get().getExpirationDate());
+                purchaseHistoryRepository.save(purchase);
                 return true;
             }
         }
