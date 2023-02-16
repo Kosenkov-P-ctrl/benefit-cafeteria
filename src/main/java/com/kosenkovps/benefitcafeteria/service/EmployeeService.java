@@ -1,11 +1,11 @@
 package com.kosenkovps.benefitcafeteria.service;
 
-import com.kosenkovps.benefitcafeteria.models.Employee;
-import com.kosenkovps.benefitcafeteria.models.Product;
-import com.kosenkovps.benefitcafeteria.models.PurchaseHistory;
-import com.kosenkovps.benefitcafeteria.repositiry.EmployeeRepository;
-import com.kosenkovps.benefitcafeteria.repositiry.ProductRepository;
-import com.kosenkovps.benefitcafeteria.repositiry.PurchaseHistoryRepository;
+import com.kosenkovps.benefitcafeteria.model.Employee;
+import com.kosenkovps.benefitcafeteria.model.Product;
+import com.kosenkovps.benefitcafeteria.model.PurchaseHistory;
+import com.kosenkovps.benefitcafeteria.repository.EmployeeRepository;
+import com.kosenkovps.benefitcafeteria.repository.ProductRepository;
+import com.kosenkovps.benefitcafeteria.repository.PurchaseHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Optional;
 
-import static com.kosenkovps.benefitcafeteria.models.Role.PERSONAL_OFFICER;
+import static com.kosenkovps.benefitcafeteria.model.Role.PERSONAL_OFFICER;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +22,11 @@ public class EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final ProductRepository productRepository;
     private final PurchaseHistoryRepository purchaseHistoryRepository;
+
+    //TODO method for role ADMIN. Remove in the future
+    public Employee saveNewEmployee(){
+        return employeeRepository.save(new Employee());
+    }
 
     public BigDecimal getCurrentBalance(Long id){
         return employeeRepository.getCurrentBalanceById(id);

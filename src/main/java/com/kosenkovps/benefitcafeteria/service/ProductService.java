@@ -1,7 +1,7 @@
 package com.kosenkovps.benefitcafeteria.service;
 
-import com.kosenkovps.benefitcafeteria.models.Product;
-import com.kosenkovps.benefitcafeteria.repositiry.ProductRepository;
+import com.kosenkovps.benefitcafeteria.model.Product;
+import com.kosenkovps.benefitcafeteria.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

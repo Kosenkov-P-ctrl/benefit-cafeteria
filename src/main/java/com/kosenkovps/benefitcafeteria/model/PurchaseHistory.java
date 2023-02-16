@@ -1,4 +1,4 @@
-package com.kosenkovps.benefitcafeteria.models;
+package com.kosenkovps.benefitcafeteria.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
