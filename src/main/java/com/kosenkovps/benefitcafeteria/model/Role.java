@@ -1,4 +1,4 @@
-package com.kosenkovps.benefitcafeteria.models;
+package com.kosenkovps.benefitcafeteria.model;
 
 public enum Role {
     USER,

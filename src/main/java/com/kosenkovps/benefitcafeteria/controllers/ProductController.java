@@ -1,6 +1,6 @@
 package com.kosenkovps.benefitcafeteria.controllers;
 
-import com.kosenkovps.benefitcafeteria.models.Product;
+import com.kosenkovps.benefitcafeteria.model.Product;
 import com.kosenkovps.benefitcafeteria.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

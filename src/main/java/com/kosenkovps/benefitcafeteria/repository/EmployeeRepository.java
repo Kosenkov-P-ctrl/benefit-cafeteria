@@ -1,6 +1,6 @@
-package com.kosenkovps.benefitcafeteria.repositiry;
+package com.kosenkovps.benefitcafeteria.repository;
 
-import com.kosenkovps.benefitcafeteria.models.Employee;
+import com.kosenkovps.benefitcafeteria.model.Employee;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

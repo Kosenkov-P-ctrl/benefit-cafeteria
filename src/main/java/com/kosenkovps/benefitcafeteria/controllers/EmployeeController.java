@@ -1,10 +1,11 @@
 package com.kosenkovps.benefitcafeteria.controllers;
 
-import com.kosenkovps.benefitcafeteria.models.PurchaseHistory;
+import com.kosenkovps.benefitcafeteria.model.PurchaseHistory;
 import com.kosenkovps.benefitcafeteria.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @RestController
@@ -30,13 +31,13 @@ public class EmployeeController {
 
     //TODO add validation on benefit
     @PutMapping("/add")
-    public void addToBalance(@RequestBody Long idSender, @RequestBody Long idTaker, @RequestBody BigDecimal benefit){
+    public void addToBalance(@RequestBody Long idSender, @RequestBody Long idTaker, @RequestBody @Valid BigDecimal benefit){
         employeeService.addToBalance(idSender, idTaker, benefit);
     }
 
     //TODO add validation on benefit
     @PutMapping("/subtract")
-    public void subtractToBalance(@RequestBody Long idSender,@RequestBody Long idTaker,@RequestBody BigDecimal benefit){
+    public void subtractToBalance(@RequestBody Long idSender,@RequestBody Long idTaker,@RequestBody @Valid BigDecimal benefit){
         employeeService.subtractToBalance(idSender,idTaker, benefit);
     }
 
