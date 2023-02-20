@@ -25,10 +25,10 @@ public class Employee {
     @DecimalMin(value = "0", message = "balance should not be less 0")
     private BigDecimal benefitBalance;
 
-    @PrePersist
-    void onCreate(){
-        this.benefitBalance = BigDecimal.ZERO;
-        this.companyRole = Role.USER;
-    }
+//    @PrePersist
+//    void onCreate(){
+//        this.benefitBalance = BigDecimal.ZERO;
+//        this.companyRole = Role.USER;
+//    }
 
 }

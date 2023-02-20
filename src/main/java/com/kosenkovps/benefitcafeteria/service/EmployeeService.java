@@ -23,9 +23,13 @@ public class EmployeeService {
     private final ProductRepository productRepository;
     private final PurchaseHistoryRepository purchaseHistoryRepository;
 
+    public Optional<Employee> getEmployeeById(Long id){
+        return employeeRepository.findById(id);
+    }
+
     //TODO method for role ADMIN. Remove in the future
-    public Employee saveNewEmployee(){
-        return employeeRepository.save(new Employee());
+    public Employee saveNewEmployee(Employee employee){
+        return employeeRepository.save(employee);
     }
 
     public BigDecimal getCurrentBalance(Long id){
@@ -33,7 +37,7 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void addToBalance(Long idSender, Long idTaker, BigDecimal benefit){
+    public Employee addToBalance(Long idSender, Long idTaker, BigDecimal benefit){
         Optional<Employee> sender = employeeRepository.findById(idSender);
         Optional<Employee> taker = employeeRepository.findById(idTaker);
         if(sender.isPresent() && taker.isPresent()) {
@@ -48,6 +52,7 @@ public class EmployeeService {
                 employeeRepository.changeBenefitBalance(idTaker, takerNewBalance);
             }
         }
+        return taker.get();
     }
 
     @Transactional
